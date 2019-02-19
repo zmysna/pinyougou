@@ -19,4 +19,5 @@
 
     <!-- 声明需要暴露的服务接口 -->
     <dubbo:annotation package="com.pinyougou.service.impl" ></dubbo:annotation>
+
 </beans>
