@@ -54,12 +54,7 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-        <!-- pinyougou-interface -->
-        <dependency>
-            <groupId>com.pinyougou</groupId>
-            <artifactId>pinyougou-interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+
         <!-- dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -76,6 +71,18 @@
             <artifactId>zkclient</artifactId>
         </dependency>
 
+        <!-- pinyougou-common -->
+        <dependency>
+            <groupId>com.pinyougou</groupId>
+            <artifactId>pinyougou-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- pinyougou-interface -->
+        <dependency>
+            <groupId>com.pinyougou</groupId>
+            <artifactId>pinyougou-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <!-- 构建部分 -->
