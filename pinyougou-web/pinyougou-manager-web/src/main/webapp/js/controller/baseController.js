@@ -1,4 +1,5 @@
-app.controller('baseController',function ($scope) {
+    app.controller('baseController',function ($scope) {
+
     /* 设置分页参数 */
     $scope.paginationConf = {
         currentPage: 1,
@@ -25,6 +26,6 @@ app.controller('baseController',function ($scope) {
             var idx = $scope.ids.indexOf(id);
             $scope.ids.splice(idx, 1);
         }
-        alert($scope.ids)
     };
-})
+
+});

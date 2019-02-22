@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+/**
+ * 品牌控制层
+ */
 @RestController
 public class BrandController {
 
@@ -49,7 +52,7 @@ public class BrandController {
     /**
      * 删除品牌
      */
-    @PostMapping("/brand/delete")
+    @GetMapping("/brand/delete")
     public void delete(Long[] ids) {
         brandService.deleteBrand(ids);
     }

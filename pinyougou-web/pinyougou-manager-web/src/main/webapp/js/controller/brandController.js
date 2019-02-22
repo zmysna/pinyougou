@@ -54,5 +54,4 @@ app.controller("ngBrandController", function ($scope, $controller, baseService) 
         }
     };
 
-
 });
