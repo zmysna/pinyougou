@@ -1,4 +1,4 @@
-    app.controller('baseController',function ($scope) {
+app.controller('baseController', function ($scope) {
 
     /* 设置分页参数 */
     $scope.paginationConf = {
@@ -26,6 +26,22 @@
             var idx = $scope.ids.indexOf(id);
             $scope.ids.splice(idx, 1);
         }
+        alert($scope.ids);
     };
 
+    /** 将JSON数组字符串转换成可读性更强的字符串（用逗号分隔）
+     *  @Param jsonStr json字符串
+     *  @Param field 要转换的域的名称
+     */
+        $scope.jsonArrStrToStr = function (jsonArrStr, field) {
+        // JSON数组字符串转换成json对象
+        var jsonArr = JSON.parse(jsonArrStr);
+        // 定义一个新数组
+        var resArr = [];
+        for (var i = 0; i < jsonArr.length; i++) {
+            var json = jsonArr[i];
+            resArr.push(json[field]);
+        }
+        return resArr.join(",");
+    }
 });

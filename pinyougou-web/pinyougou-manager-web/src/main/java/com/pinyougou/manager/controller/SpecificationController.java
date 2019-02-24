@@ -7,10 +7,13 @@ import com.pinyougou.service.SpecificationService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * 规格控制层
+ */
 @RestController
 @RequestMapping("/specification")
 public class SpecificationController {
@@ -29,6 +32,7 @@ public class SpecificationController {
 //        return specificationService.findAll();
 //    }
 //
+
     /**
      * 添加规格和规格选项
      */
@@ -51,10 +55,12 @@ public class SpecificationController {
      */
     @GetMapping("/delete")
     public void delete(Long[] ids) {
-            specificationService.delete(ids);
+        specificationService.delete(ids);
     }
 
-    /** 多条件分页查询规格 */
+    /**
+     * 多条件分页查询规格
+     */
     @GetMapping("/findByPage")
     public PageResult<Specification> findByPage(String specName, Integer pageNum, Integer pageSize) {
         if (specName != null && StringUtils.isNotBlank(specName)) {
@@ -64,8 +70,16 @@ public class SpecificationController {
                 e.printStackTrace();
             }
         }
-        PageResult<Specification> pageResult = specificationService.findBypage(specName,pageNum, pageSize);
+        PageResult<Specification> pageResult = specificationService.findBypage(specName, pageNum, pageSize);
         return pageResult;
+    }
+
+    /**
+     * 查询所有规格
+     */
+    @GetMapping("/findSpecificationList")
+    public List<Map<String, Object>> findSpecificationList() {
+        return specificationService.findAllByIdAndName();
     }
 
 }

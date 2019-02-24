@@ -31,7 +31,7 @@ app.controller("ngBrandController", function ($scope, $controller, baseService) 
         if ($scope.entity.id) {
             URL = "update";
         }
-        baseService.sendPost("/brand/" + url, $scope.entity).then(function (response) {
+        baseService.sendPost("/brand/" + URL, $scope.entity).then(function (response) {
             $scope.reload();
         }, function (response) {
             alert("保存失败");

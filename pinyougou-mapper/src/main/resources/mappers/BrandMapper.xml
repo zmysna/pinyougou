@@ -21,5 +21,6 @@
                 and first_char = #{firstChar}
             </if>
         </where>
+        order by id asc
     </select>
 </mapper>

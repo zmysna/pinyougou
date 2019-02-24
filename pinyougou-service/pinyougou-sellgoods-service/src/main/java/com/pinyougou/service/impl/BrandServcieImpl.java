@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service(interfaceName="com.pinyougou.service.BrandService")
 @Transactional
@@ -62,6 +63,11 @@ public class BrandServcieImpl implements BrandService {
         return new PageResult<Brand>(pageInfo.getTotal(),pageInfo.getList());
     }
 
+    /** 查询所有的品牌( id 和 name )*/
+    @Override
+    public List<Map<String,Object>> findAllByIdAndName() {
+        return brandMapper.findAllByIdAndName();
+    }
 
 
 }

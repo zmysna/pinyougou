@@ -3,6 +3,9 @@ package com.pinyougou.service;
 import com.pinyougou.common.pojo.PageResult;
 import com.pinyougou.pojo.Specification;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 规格服务层接口
  */
@@ -20,4 +23,6 @@ public interface SpecificationService {
     /** 删除规格*/
     void delete(Long[] ids);
 
+    /** 查询所有规格（id和name)*/
+    List<Map<String,Object>> findAllByIdAndName();
 }

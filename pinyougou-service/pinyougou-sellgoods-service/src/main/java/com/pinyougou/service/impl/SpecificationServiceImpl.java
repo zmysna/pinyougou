@@ -8,14 +8,15 @@ import com.pinyougou.common.pojo.PageResult;
 import com.pinyougou.mapper.SpecificationMapper;
 import com.pinyougou.mapper.SpecificationOptionMapper;
 import com.pinyougou.pojo.Specification;
-import com.pinyougou.pojo.SpecificationOption;
 import com.pinyougou.service.SpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 规格服务层实现类
- *
  */
 @Service(interfaceName="com.pinyougou.service.SpecificationService")
 @Transactional
@@ -81,6 +82,11 @@ public class SpecificationServiceImpl implements SpecificationService {
         }
     }
 
+    /** 查询所有规格（id和name)*/
+    @Override
+    public List<Map<String, Object>> findAllByIdAndName() {
+        return specificationMapper.findAllByIdAndName();
+    }
 
 
 }

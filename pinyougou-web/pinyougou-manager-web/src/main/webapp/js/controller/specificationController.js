@@ -15,7 +15,7 @@ app.controller('specificationController', function ($scope, $controller, baseSer
         $scope.entity.specificationOptions.push({});
     };
 
-    /** 新增规格选项行 */
+    /** 删除规格选项行 */
     $scope.deleteTableRow = function (index) {
         $scope.entity.specificationOptions.splice(index, 1);
     };

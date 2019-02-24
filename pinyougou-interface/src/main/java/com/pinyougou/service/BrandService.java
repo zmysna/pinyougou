@@ -3,9 +3,8 @@ package com.pinyougou.service;
 import com.pinyougou.common.pojo.PageResult;
 import com.pinyougou.pojo.Brand;
 
-import javax.naming.ldap.PagedResultsControl;
-import java.awt.print.Pageable;
 import java.util.List;
+import java.util.Map;
 
 public interface BrandService {
     /** 查询所有品牌 */
@@ -22,5 +21,8 @@ public interface BrandService {
 
     /** 多条件分页查询品牌 */
     PageResult findBypage(Brand brand, Integer pageNum, Integer pageSize);
+
+    /** 查询所有的品牌( id 和 name )*/
+    List<Map<String,Object>> findAllByIdAndName();
 }
 

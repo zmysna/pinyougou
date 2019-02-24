@@ -15,4 +15,5 @@ public interface SpecificationOptionService {
      * @return
      */
     List<SpecificationOption> findOptionsBySpecId(Long specId);
+
 }
