@@ -1,16 +1,24 @@
 package com.pinyougou.pojo;
 
+import javax.persistence.*;
+
 /**
  * ItemCat 实体类
  * @date 2019-02-18 13:03:19
  * @version 1.0
  */
+@Table(name = "tb_item_cat")
 public class ItemCat implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
+	@Column(name = "parent_id")
 	private Long parentId;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "type_id")
 	private Long typeId;
 
 	/** setter and getter method */

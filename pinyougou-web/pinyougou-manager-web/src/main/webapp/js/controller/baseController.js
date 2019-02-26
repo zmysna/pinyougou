@@ -26,14 +26,13 @@ app.controller('baseController', function ($scope) {
             var idx = $scope.ids.indexOf(id);
             $scope.ids.splice(idx, 1);
         }
-        alert($scope.ids);
     };
 
     /** 将JSON数组字符串转换成可读性更强的字符串（用逗号分隔）
      *  @Param jsonStr json字符串
      *  @Param field 要转换的域的名称
      */
-        $scope.jsonArrStrToStr = function (jsonArrStr, field) {
+    $scope.jsonArrStrToStr = function (jsonArrStr, field) {
         // JSON数组字符串转换成json对象
         var jsonArr = JSON.parse(jsonArrStr);
         // 定义一个新数组

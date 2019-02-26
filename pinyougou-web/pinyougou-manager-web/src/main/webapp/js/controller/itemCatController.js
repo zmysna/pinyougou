@@ -1,22 +1,33 @@
-app.controller('typeTemplateController', function ($scope, baseService, $controller) {
+app.controller('itemCatController', function ($scope, baseService, $controller) {
     /* 指定继承baseController*/
     $controller('baseController', {$scope: $scope});
 
-    /*分页查询*/
-    $scope.searchEntity = {};
-    $scope.findByPage = function (pageNum, pageSize) {
-        baseService.findByPage("/typeTemplate/findByPage", pageNum,
-            pageSize, $scope.searchEntity)
-            .then(
-                function (response) {
-                    $scope.dataList = response.data.list;
-                    $scope.paginationConf.totalItems = response.data.totalNum;
-                }, function (response) {
-                    alert("服务器正在忙");
+    /** 根据parentId查询所有的商品分类 */
+    $scope.findByParentId = function (parentId) {
+        baseService.sendGet("/itemCat/findAllByParentId", "parentId=" + parentId)
+            .then(function (response) {
+                if (response.data.length > 0) {
+                    $scope.dataList = response.data;
+                } else {
+                    $scope.navigationItems.pop();
+                    alert("没有下级分类了");
                 }
-            )
-
+            });
     };
+
+
+    /** 导航条面包屑*/
+    $scope.navigationItems = [];
+    // 添加内容
+    $scope.addNavItem = function (itemCat) {
+        $scope.navigationItems.push(itemCat);
+    };
+    // 删除内容
+    $scope.removeNavItem = function (index) {
+        var num = $scope.navigationItems.length - index;
+        $scope.navigationItems.splice(index,num);
+    }
+
 
     /** 定义brandList和findAllBrands方法*/
     $scope.brandList = {}
@@ -38,16 +49,6 @@ app.controller('typeTemplateController', function ($scope, baseService, $control
         )
     };
 
-    /** 新增扩展属性行 */
-    $scope.addTableRow = function () {
-        $scope.entity.customAttributeItems.push({});
-    };
-
-    /** 删除扩展属性行 */
-    $scope.deleteTableRow = function (index) {
-        $scope.entity.customAttributeItems.splice(index, 1);
-    };
-
 
     /*数据绑定*/
     $scope.show = function (typeTemplate) {
@@ -61,7 +62,7 @@ app.controller('typeTemplateController', function ($scope, baseService, $control
     };
 
 
-    /* 添加或者更新类型模板*/
+    /* 添加或者更新品牌*/
     $scope.saveOrUpdate = function () {
         var URL = "insert";
         if ($scope.entity.id) {
@@ -69,14 +70,14 @@ app.controller('typeTemplateController', function ($scope, baseService, $control
         }
         baseService.sendPost("/typeTemplate/" + URL, $scope.entity).then(function (response) {
             //清空编辑框的数据
-            $scope.entity={};
+            $scope.entity = {};
             $scope.reload();
         }, function (response) {
             alert("保存失败");
         })
     };
 
-    /**删除类型模板*/
+    /**删除品牌*/
     $scope.delete = function () {
         if ($scope.ids.length > 0) {
             if (confirm("你真的确定要删除吗？")) {

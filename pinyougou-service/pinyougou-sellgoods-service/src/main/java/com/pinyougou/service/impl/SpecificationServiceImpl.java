@@ -52,7 +52,7 @@ public class SpecificationServiceImpl implements SpecificationService {
      */
     @Override
     public void insert(Specification specification) {
-        int specId = specificationMapper.insertSelective(specification);
+        specificationMapper.insertSelective(specification);
         specificationOptionMapper.save(specification);
     }
 
