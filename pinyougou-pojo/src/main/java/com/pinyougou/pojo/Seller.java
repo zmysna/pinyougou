@@ -1,37 +1,68 @@
 package com.pinyougou.pojo;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Seller 实体类
  * @date 2019-02-18 13:03:19
  * @version 1.0
  */
+@Table(name = "tb_seller")
 public class Seller implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
+	@Id
+	@Column(name = "seller_id")
 	private String sellerId;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "nick_name")
 	private String nickName;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "mobile")
 	private String mobile;
+	@Column(name = "telephone")
 	private String telephone;
+	@Column(name = "status")
 	private String status;
+	@Column(name = "address_detail")
 	private String addressDetail;
+	@Column(name = "linkman_name")
 	private String linkmanName;
+	@Column(name = "linkman_qq")
 	private String linkmanQq;
+	@Column(name = "linkman_mobile")
 	private String linkmanMobile;
+	@Column(name = "linkman_email")
 	private String linkmanEmail;
+	@Column(name = "license_number")
 	private String licenseNumber;
+	@Column(name = "tax_number")
 	private String taxNumber;
+	@Column(name = "org_number")
 	private String orgNumber;
+	@Column(name = "address")
 	private Long address;
+	@Column(name = "logo_pic")
 	private String logoPic;
+	@Column(name = "brief")
 	private String brief;
+	@Column(name = "create_time")
 	private java.util.Date createTime;
+	@Column(name = "legal_person")
 	private String legalPerson;
+	@Column(name = "legal_person_card_id")
 	private String legalPersonCardId;
+	@Column(name = "bank_user")
 	private String bankUser;
+	@Column(name = "bank_name")
 	private String bankName;
+
 
 	/** setter and getter method */
 	public void setSellerId(String sellerId){
