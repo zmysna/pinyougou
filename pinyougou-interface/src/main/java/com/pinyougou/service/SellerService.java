@@ -21,4 +21,7 @@ public interface SellerService {
      * 审核商家（修改商家的状态）
      */
     void updateStatus(String sellerId, String status);
+
+    /** 根据用户名查询一个商家*/
+    Seller findOne(String username);
 }

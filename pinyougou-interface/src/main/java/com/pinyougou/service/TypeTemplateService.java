@@ -3,6 +3,9 @@ package com.pinyougou.service;
 import com.pinyougou.common.pojo.PageResult;
 import com.pinyougou.pojo.TypeTemplate;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 类型模板服务层接口
  */
@@ -35,4 +38,10 @@ public interface TypeTemplateService {
      * @param ids
      */
     void delete(Long[] ids);
+
+    /** 根据id查询一个类型模板*/
+    TypeTemplate findOne(Long id);
+
+    /** 根据类型模板查找相应的规格和规格选项*/
+    List<Map> findSpecList(Long id);
 }

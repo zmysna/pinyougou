@@ -45,10 +45,10 @@
 								<table>
 									<tr>
 										<td>
-											<input name="vcode" type="text" placeholder="请输入验证码" autocomplete="off">
+											<input name="vcode" type="text" placeholder="请输入验证码" autocomplete={"off">
 										</td>
 										<td>
-											<span><img src="/user/vcode" width="148" id="picCode" style="cursor: pointer"></span>
+											<span><img src="/user/vcode" id="picCode" width="148"  style="cursor: pointer"></span>
 										</td>
 									</tr>
 								</table>
@@ -84,15 +84,19 @@
 
 
 	<script src="/js/plugins/jquery/jquery.min.js"></script>
-	
+
 	<script src="/js/plugins/sui/sui.min.js"></script>
-	
+
 	<script src="/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
 	<script src="/js/pages/jquery.slideunlock.js"></script>
-	
+
 	<script>
 		$(function(){
-			var slider = new SliderUnlock("#slider",{
+            //点击加载验证码
+            $("#picCode").click(function () {
+                $(this).attr("src", "/user/vcode?ran=" + Math.random());
+            });
+            var slider = new SliderUnlock("#slider",{
 					successLabelTip : "欢迎访问品优购"	
 				},function(){
 					// alert("验证成功,即将跳转至首页");
@@ -100,10 +104,6 @@
 	        	});
 	        slider.init();
 
-            //点击加载验证码
-            $("#picCode").click(function () {
-                $(this).attr("src", "/user/vcode?ran=" + Math.random());
-            });
 		})
 	</script>
 </body>

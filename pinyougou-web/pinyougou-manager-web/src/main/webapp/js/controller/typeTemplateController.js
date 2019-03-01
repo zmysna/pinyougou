@@ -88,7 +88,7 @@ app.controller('typeTemplateController', function ($scope, baseService, $control
                 })
             }
         } else {
-            alert("请选择要删除的品牌")
+            alert("请选择要删除的类型模板")
         }
     };
 

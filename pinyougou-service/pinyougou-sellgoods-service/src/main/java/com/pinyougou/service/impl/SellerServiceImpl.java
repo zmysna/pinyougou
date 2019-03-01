@@ -65,6 +65,18 @@ public class SellerServiceImpl implements SellerService {
         }
     }
 
+    /**
+     * 根据用户名查找并返回一个用户
+     * @param username
+     * @return
+     */
+    @Override
+    public Seller findOne(String username) {
+        Seller record = new Seller();
+        record.setSellerId(username);
+        Seller seller = sellerMapper.selectOne(record);
+        return seller;
+    }
 
 
 }
