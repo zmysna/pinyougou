@@ -23,7 +23,7 @@
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini"
-          ng-app="pinyougou" ng-controller="goodsController" ng-init="reload()">
+          ng-app="pinyougou" ng-controller="goodsController"">
   		<!-- .box-body -->
         <div class="box-header with-border">
             <h3 class="box-title">商品管理</h3>
@@ -48,10 +48,11 @@
 							<button type="button" class="btn btn-default" title="下架" ng-click="updateMarktable('0')">
 								<i class="fa fa-ban"></i> 下架
 							</button>
-							<button type="button" class="btn btn-default" title="刷新"
+								<button type="button" class="btn btn-default" title="刷新"
 								onclick="window.location.reload();">
 								<i class="fa fa-refresh"></i> 刷新
 							</button>
+							{{ids}}
 						</div>
 					</div>
 				</div>
