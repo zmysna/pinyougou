@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ########### 配置SpringDataRedis整合Jedis  操作Redis单机版(1台Redis) ########### -->
+    <!-- 配置Redis数据库的连接工厂 -->
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${redis.host}"/>
+        <property name="port" value="${redis.port}"/>
+    </bean>
+
+
+    <!-- ########### 配置SpringDataRedis整合Jedis 操作Redis集群版(6台Redis) ########### -->
+    <!-- 配置资源文件属性源 -->
+    <bean id="propertySource" class="org.springframework.core.io.support.ResourcePropertySource">
+        <constructor-arg name="location" value="classpath:props/redis-cluster.properties"/>
+    </bean>
+
+    <!-- 配置集群节点配置信息对象 -->
+    <bean id="clusterConfig" class="org.springframework.data.redis.connection.RedisClusterConfiguration">
+        <!-- 设置属性源(用属性文件配置集群的节点信息) -->
+        <constructor-arg name="propertySource" ref="propertySource"/>
+    </bean>
+
+    <!-- 配置Redis数据库的连接工厂 -->
+    <!-- <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+         &lt;!&ndash; 设置集群的节点配置信息 6个node节点 &ndash;&gt;
+         <constructor-arg name="clusterConfig" ref="clusterConfig"/>
+     </bean>-->
+    <!-- 配置RedisTemplate(操作Redis数据库) -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <!-- 配置连接Redis数据库的连接工厂 -->
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+
+</beans>

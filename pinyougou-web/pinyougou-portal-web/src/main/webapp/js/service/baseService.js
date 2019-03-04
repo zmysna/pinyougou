@@ -26,7 +26,7 @@ app.service('baseService', function($http){
     /** 分页查询(带查询条件或不带查询条件) */
     this.findByPage = function(url, page, rows, data){
         /** 定义分页URL */
-        url += '?page='+ page +'&rows=' + rows;
+        url += '?pageNum='+ page +'&pageSize=' + rows;
         if (data && JSON.stringify(data) != "{}"){
             return $http({
                 method : 'get',

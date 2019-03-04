@@ -20,10 +20,10 @@
 
 </head>
 
-<body>
+<body ng-app="pinyougou" ng-controller="indexController" ng-init="findByContentCategoryId(1)">
 	<!-- 头部栏位 -->
 	<!--页面顶部-->
-<div id="nav-bottom">
+<div id="nav-bottom" >
 	<!--顶部-->
 	<div class="nav-top">
 		<div class="top">
@@ -527,26 +527,16 @@
 					<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
 					  <ol class="carousel-indicators">
 					    <!-- 下面圆点控制 -->
-					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					    <li data-target="#myCarousel" data-slide-to="1"></li>
-					    <li data-target="#myCarousel" data-slide-to="2"></li>
+					    <li data-target="#myCarousel"
+							ng-repeat="c in contentList"
+							data-slide-to="{{$index}}"
+							class="{{$index==0?'active':''}}"></li>
 					  </ol>
 					  <div class="carousel-inner">
-					    <div class="active item">
-					    <a href="http://baidu2.wypxj.com/">
-					    	<img src="img/banner1.jpg"  />
+					    <div ng-repeat="c in contentList" class="{{$index==0?'active':''}} item">
+					    <a href="{{c.url}}">
+					    	<img src="{{c.pic}}"  />
 					      </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="img/banner2.jpg"  />
-					     </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="img/banner3.jpg"  />
-						</a>
-					     
 					    </div>
 					  </div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
 					</div>
